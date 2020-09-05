@@ -1,0 +1,27 @@
+package DayFormate;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class DateTest03 {
+    public static void main(String[] args) {
+        //这个是什么时间？
+        //1970-01-1 00:00:00 001 格林威治时间
+        Date time = new Date(1); //注意参数是一个毫秒
+
+        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss SSS");
+        String format = sdf.format(time);
+        //北京是东8区，差8个小时。
+        System.out.println(format);//1970-01-01 08:00:00 001
+        //昨天此时的时间
+        Date yesterday =  new Date(System.currentTimeMillis()-24*60*60*1000);
+        String format1 = sdf.format(yesterday);
+        System.out.println(format1);
+
+        //获取去年的今天的时间
+        //数据过大，要转为Long类型
+        Date QuNianJt = new Date(System.currentTimeMillis()-(1000*60*60*24*365L));
+        String format2 = sdf.format(QuNianJt);
+        System.out.println(format2);
+    }
+}
